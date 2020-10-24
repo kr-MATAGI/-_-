@@ -1,0 +1,32 @@
+<ORM>
+
+1. ORM (Object Relational Mapping)
+	- 객체지향 프로그래밍의 객체와 관계형 데이터베이스의 데이터를 연결하는 기술
+	- 객체지향 프로그래밍에서 사용할 수 있는 가상의 객체지향 데이터베이스를 만들어 프로그래밍 코드와 데이터 연결
+	
+	
+<쿼리 성능 최적화>
+
+1. 쿼리 성능 최적화
+	- 최적화 전 APM을 사용하여 최적화할 쿼리 선정
+		APM(Application Performance Management/Monitoring)
+			: 애플리케이션의 성능 관리를 위해 다양한 모니터링 기능을 제공하는 도구
+		
+		RBO(Rule Based Optimizer) : 규칙 기반 옵티마이저
+		CBO(Cost Based Optimizer) : 비용 기반 옵티마이저
+	
+	- SQL코드 재구성
+		> WHERE 절을 추가형 일부 레코드만 조회
+		> WHERE 절에 연산자 사용 자제
+		> 특정 데이터 확인 시 IN보다 EXISTS 사용
+			IN : SELECT 절에서 조회한 칼럼 값으로 비교하므로 EXISTS에 비해 성능이 떨어진다.
+			EXISTS(서브 쿼리) : 
+				> 서브쿼리의 결과가 한 건이라도 존재하면 TRUE 없으면 FALSE를 리턴한다.
+				> 서브 쿼리에 일치하는 결과가 한 건이라도 있으면 쿼리를 더 이상 수행하지 않는다.
+				> SELECT 절을 평가하지 않으므로 일반적으로 IN에 비해 성능이 좋다.
+				> EXISTS의 서브코리를 메인 쿼리 JOIN으로 변경할 경우 중복데이터가 나올 수 있다.
+				
+			NOT EXISTS : NULL 데이터에 대해 TRUE를 리턴한다.
+			NOT IN : NULL 데이터에 대해 FALSE를 리턴한다. NULL 처리를 하지 않을 경우 누락이 발생한다.
+			
+		> 힌트를 활용하여 실행 계획에 액세스 경로 및 조인 순서 변경
