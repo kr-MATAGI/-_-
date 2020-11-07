@@ -1,0 +1,17 @@
+<Annotation>
+
+
+1. Anntation
+	- 인터페이스를 기반으로한 문법
+	- 주석처럼 코드에 달아 클래스에 특별한 의미를 부여하거나 기능을 주입할 수 있다.
+	- 또한, 해석되는 시점을 정할 수 있따.
+	
+	1) built-in annotation
+		- JDK에 내장되어 있다.
+		- 대표 : @Override
+	
+	2) Meta annotation
+		- 어노테이션에 대한 정보를 나타내기 위함.
+		
+	3) Custom annotation
+		- 개발자가 직접 만들어 냄.
