@@ -1,0 +1,10 @@
+test.java 의
+public class Hello {} 가 있을 때
+
+javac test.java 하면
+Hello.class가 나오고
+
+이를 java Hello라고 실행할 수 있다.
+
+
+javac <option> <source files>
