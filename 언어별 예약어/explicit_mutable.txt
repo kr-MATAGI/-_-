@@ -1,0 +1,27 @@
+1. explicit
+	- 생성자를 explicit으로 선언한다면 암시적인 타입 변환을 방지할 수 있다.
+	- 해당 생성자가 복사 생성자의 형태로도 호출되는 것을 막는다.
+	
+	e.g)
+		explicit MyString(int capcaity);
+		
+		MyString s(5); // 허용
+		MyString s = 5; // 컴파일 오류
+		
+2. mutable
+	- 멤버 변수를 mutable 로 선언한다면 const 함수에서도 이들 값을 바꿀 수 있다.
+	
+	e.g)
+		class A	{
+			mutable int data_;
+			
+			public:
+				A(int data) : data_(data) {}
+				
+				void DoSomething(int x) const {
+					data_ = x;
+				}
+			}
+		
+	- mutable이 필요한 이유
+		> const 함수 안에서 해당 멤버 변수에 const가 아닌 작업을 할 수 있게 한다.

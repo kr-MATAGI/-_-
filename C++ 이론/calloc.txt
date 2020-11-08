@@ -1,0 +1,4 @@
+1. calloc
+	- malloc과 유사하나 malloc은 할당과 동시에 초기화를 해주지 않지만 calloc은 NULL값으로 초기화 해준다.
+	- malloc은 (5*sizeof(int))처럼 할당할 전체 데이터의 크기가 들어가지만
+	 calloc은 (5, sizeof(int)) 첫 번째 인자로 몇 개를 할당할 것인지와 두 번쨰 인자로써 각 할당된 개수의 크기를 설정.
