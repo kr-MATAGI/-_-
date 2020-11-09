@@ -1,0 +1,39 @@
+https://zeddios.tistory.com/237
+
+1. RBT (Red-Black Tree)
+	- BST를 기반으로하는 트리 형식의 자료구조.
+	- Search, Insert, Delete에 O(log n)의 시간 복잡도가 소요.
+	- depth를 최소화하여 시간 복잡도를 줄이는 것이 핵심 아이디어.
+	
+2. RBT의 정의
+	- 다음의 성질들을 만족하는 BST를 RBT라고 한다.
+	
+	- 각 노드는 Red or Black 이라는 색깔을 갖는다.
+	- Root node의 색깔은 Black 이다.
+	- 각 leaf node는 black 이다.
+	- 어떤 노드의 색깔이 red라면 두 개의 Child 색깔은 모두 Black 이다.
+	- 각 노드에 대해서 노드로부터 descendant leaves까지의 단순 경로는 모두 같은 수의 balck nodes 들을 포함하고 있다.
+	 이를 해당 노드의 Black-Height라고 한다.
+	 
+3. RBT의 특징
+	- Binary Search Tree 이므로 BST의 특징을 모두 갖는다.
+	- Root node 부터 leaf node 까지의 모든 경로 중 최소 경로와 최대 경로의 크기 비율은 2 보다 크지 않다.
+		> 이러한 상태를 balanced 상태라고 한다.
+	- 노드의 child가 없을 경우 child를 가리키는 포인터는 NIL 값을 저장한다.
+		> 이러한 NIL들을 leaf node로 간주한다.
+		
+4. RBT의 삽입
+	- BST의 특성을 유지하며 삽입한다.
+	1) 삽입된 노드의 색깔을 RED로 지정한다.
+		> Red 로 지정하는 이유는 Black-Height 변경을 최소화하기 위함이다.
+	2) 삽입 결과 RBT의 특성에 위배 되는 경우 노드의 색깔을 조정한다.
+	3) Black-Height가 위배되었다면 rotation을 통해 height를 조정한다.
+	4) 이러한 과정을 통해 RBT의 height에 존재하는 internal node들의 Black-height 가 같아지게 되고
+	 최소 경로와 최대 경로의 크기 비율이 2 미만으로 유지된다.
+	 
+5. RBT의 삭제
+	- BST의 특성을 유지하며 삭제한다.
+	- 삭제될 노드의 child 개수에 따라 rotation 방법이 달라진다.
+	- 만약 지워진 노드의 색깔이 Black이라면 Black-Height가 1 감소한 경로에 black node가 추가되도록
+	 rotation하고 노드의 색깔을 조정한다.
+	- 만약 지워진 노드의 색깔이 Red라면 위배가 발생하지 않았으므로 RBT가 그대로 유지된다.

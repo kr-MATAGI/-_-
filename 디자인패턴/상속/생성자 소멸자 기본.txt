@@ -1,0 +1,134 @@
+1.
+
+클래스의 생성자/소멸자가 있는 상태에서
+Parent p; 라고 하면 생성자/소멸자 함수가 모두 실행되지만
+
+Parent *p = new Parent(); 하면 생성자만 실행되므로
+delete p; 를 해주어야 소멸자가 실행된다.
+
+#include <iostream>
+
+class Parent
+{
+public:
+	Parent()
+	{
+		std::cout << "Create Parent() !\n";
+	}
+	~Parent()
+	{
+		std::cout << "Deleted Parent() !\n";
+	}
+};
+
+int main()
+{
+	Parent p;
+	//Parent* p = new Parent();
+	//delete p;
+
+
+	return 0;
+}
+
+------------------------------------------------------------------------------------------
+
+2. 
+
+Parent / Child 클래스가 있는 상태에서
+Child가 Parent를 상속 받고 프로그램을 실행시킬 경우
+Child c;
+
+Parent 생성자 -> Child 생성자 -> Child 소멸자 -> Parent 소멸자 순으로 실행된다.
+
+
+#include <iostream>
+
+class Parent
+{
+public:
+	Parent()
+	{
+		std::cout << "Create Parent() !\n";
+	}
+	~Parent()
+	{
+		std::cout << "Deleted Parent() !\n";
+	}
+};
+
+class Child : Parent
+{
+public:
+	Child()
+	{
+		std::cout << "Create Child() !\n";
+	}
+	~Child()
+	{
+		std::cout << "Deleted Child() !\n";
+	}
+
+
+
+};
+
+int main()
+{
+	Child c;
+
+
+	return 0;
+}
+
+
+
+------------------------------------------------------------------------------------------
+
+3.
+
+Parent* p = new Child;에서
+부모 클래스 소멸자에 virtual이 없으면
+Parent 클래스 생성 -> Child 클래스 생성 -> Parent 클래스 소멸자 로 Child 소멸자는 안 불린다.
+-> Child 에서 p로 업캐스팅 되기 때문에 parent만을 인식
+
+만약 부모 클래스의 가상 함수 소멸자가 있다면
+Parent 클래스 생성 -> Child 클래스 생성 -> Child 클래스 소멸자 -> Parent 클래스 소멸자로 호출된다.
+(파생 클래스는 가상 소멸자가 없어도 된다)
+
+
+#include <iostream>
+
+class Parent
+{
+public:
+	Parent()
+	{
+		std::cout << "Create Parent() !\n";
+	}
+	virtual ~Parent()
+	{
+		std::cout << "Deleted Parent() !\n";
+	}
+};
+
+class Child : public Parent
+{
+public:
+	Child()
+	{
+		std::cout << "Create Child() !\n";
+	}
+	~Child()
+	{
+		std::cout << "Deleted Child() !\n";
+	}
+};
+
+int main()
+{
+	Parent* p = new Child;
+	delete p;
+
+	return 0;
+}
