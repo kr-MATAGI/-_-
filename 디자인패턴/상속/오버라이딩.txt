@@ -1,0 +1,51 @@
+#include <iostream>
+
+class Parent
+{
+public:
+	Parent()
+	{
+		std::cout << "Create Parent() !\n";
+	}
+	virtual ~Parent()
+	{
+		std::cout << "Deleted Parent() !\n";
+	}
+
+	void Print()
+	{
+		std::cout << "Parentt Print() Method \n";
+	}
+};
+
+class Child : public Parent
+{
+public:
+	Child()
+	{
+		std::cout << "Create Child() !\n";
+	}
+	~Child()
+	{
+		std::cout << "Deleted Child() !\n";
+	}
+
+	void Print()
+	{
+		std::cout << "Child Print() Method \n";
+	}
+};
+
+int main()
+{
+	Parent* p;
+	Child *c = new Child;
+
+	c->Print(); // Child Print()
+	p = c;
+	c->Print(); // Child Print()
+	p->Print(); // Parent Print()
+	delete c;
+
+	return 0;
+}
