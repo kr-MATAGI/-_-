@@ -1,0 +1,12 @@
+https://mangkyu.tistory.com/48
+
+1. HTTP
+	- Client의 Request 있을 때만 Server가 Response하고 전송이 끝나면 연결을 바로 끊음.(단방향)
+	- 실시간 연결이 아니고, 필요한 경우에만 Server로 요청을 보내는 상황에 유리하다.
+	- 요청을 보내 Server의 응답을 기다리는 어플리케이션(Android or iOS)의 개발에 자주 이용된다.
+	
+	
+2. Socket 통신
+	- Server와 Client가 특정 Port를 통해 실시간으로 양방향 통신하는 방식
+	- 실시간 동영상 Streaming이나 온라인 게임 등과 같은 경우 자주 사용된다.
+	
