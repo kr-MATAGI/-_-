@@ -1,0 +1,4 @@
+https://en.cppreference.com/w/c/string/wide/iswcntrl
+
+1. iswcntrl
+	- 매개변수가 현재 로케일 내의 제어 문자를 나타내는 확장 문자 코드인지 아닌지를 시험한다.
