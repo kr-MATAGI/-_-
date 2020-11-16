@@ -10,7 +10,7 @@
 		Java에서는 synchronized 키워드를 사용하여 스레드 간 race condition을 통제한다.
 	- 이 키워드를 기반으로 구현된 Collection들도 많이 존재한다.
 		> List를 대신해서 Vector를 사용할 수 있고,
-		Map을 대신하여 HashTable을 사용할 수 있따.
+		Map을 대신하여 HashTable을 사용할 수 있다.
 		하지만 이 Collection 들은 제공하는 API가 적고 성능도 좋지 않다.
 	- 기본적으로는 Collections라는 util 클래스에서 제공되는 static 메소드를 통해 해결할 수 있따.
 		Collections.synchroziedList()
